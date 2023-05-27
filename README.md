@@ -6,6 +6,8 @@
 * **Turma:** SI1N
 * **Monitora:** Suellen Miranda
 
+> Essa atividade avaliativa foi realizado para a matéria de Design e Desenvolvimento de Banco de Dados 1 na Universidade de Vila Velha.
+
 ### Estrutura de Diretórios
 - **pset1**
   - **[si1n_202305874_postgresql.architect](./uvv_bd1_uvv/pset1/si1n_202305874_postgresql.architect)**
