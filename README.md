@@ -8,28 +8,30 @@
 
 > Essa atividade avaliativa foi realizado para a matéria de Design e Desenvolvimento de Banco de Dados 1 na Universidade de Vila Velha.
 
-### Estrutura dos Diretórios
+## Estrutura dos Diretórios
 - **[pset1](https://github.com/caiquealmr/uvv_bd1_si1n/tree/main/pset1)**
   - **[si1n_202305874_postgresql.architect](https://github.com/caiquealmr/uvv_bd1_si1n/blob/main/pset1/si1n_202305874_postgresql.architect)**
   - **[si1n_202305874_postgresql.pdf](https://github.com/caiquealmr/uvv_bd1_si1n/blob/main/pset1/si1n_202305874_postgresql.pdf)**
-  - **[si1n_202305874_postgresql.sql](./uvv_bd1_si1n/pset1/si1n_202305874_postgres.sql)**
+  - **[si1n_202305874_postgresql.sql]()**
 - **[README.md](https://github.com/caiquealmr/uvv_bd1_si1n/blob/main/README.md)**
-### O PSET
-Um Problem Set (PSET) é um conjunto de problemas e tarefas difíceis (alguns
-extremamente difíceis) que o forçarão a estudar e realmente compreender a matéria.
+
+## O PSET
+Um Problem Set (PSET) é um conjunto de problemas e tarefas difíceis (alguns extremamente difíceis) que o forção a estudar e realmente compreender a matéria.
 Esse trabalho consiste em um PSET com objetivo de implementar um banco de dados no PostgreSQL, a partir de um diagrama relacional, e escrever códigos SQL para gerar diversos relatórios.
 
-* Banco de Dados = 'uvv'
-* Esquema Lógico = 'lojas'
+### Informações importantes
+* SGBD = PostgreSQL
+* Banco de Dados = uvv
+* Esquema Lógico = lojas
 
-### Diagrama Relacional
+## Diagrama Relacional
 A partir do **SQL Power Architect** criei todas as tabelas e seus atributos incluindo comentários, criando chaves primárias, cardinalidades, relacionamentos, chaves estrangeiras e chaves compostas. Os arquivos gerados foram:
 
 * **[arquivo.architect](https://github.com/caiquealmr/uvv_bd1_si1n/blob/main/pset1/si1n_202305874_postgresql.architect)** consiste no código para rodar o diagrama dentro do Software.
 * **[arquivo.pdf](https://github.com/caiquealmr/uvv_bd1_si1n/blob/main/pset1/si1n_202305874_postgresql.pdf)** consiste em um arquivo PDF com uma imagem do diagrama.
 
-### Implementação do banco de dados no PostgreSQL
-A implementação do banco de dados foi feita no **PostgreSQL**, o sistema de gerenciamento de bancos de dados open source mais avançado que existe atualmente. Todo o passo a passo está descrito no **script.sql**, o qual está comentado e organizado de forma que qualquer leitor possa compreender cada comando usado.
+## Implementação do banco de dados no PostgreSQL
+A implementação do banco de dados foi feita no **PostgreSQL**, o sistema de gerenciamento de bancos de dados open source mais avançado que existe atualmente. Todo o passo a passo está descrito no **[script.sql]()**, o qual está comentado e organizado de forma que qualquer leitor possa compreender cada comando usado.
 
 * Caso queira testa-lo em seu terminal Linux é necessário usar o seguinte comando:
 
@@ -37,9 +39,9 @@ A implementação do banco de dados foi feita no **PostgreSQL**, o sistema de ge
 psql -U postgres < si1n_202305874_postgresql.sql 
 ```
 
-### Comandos PostgreSQL
+## Comandos usados e suas respectivas funções
 
-| Sintaxe do Comando  | Ação                       |
+| Sintaxe do Comando  | Função                     |
 |---------------------|----------------------------|
 | DROP DATABASE       | Apagar Banco de Dados      |
 | DROP USER           | Apagar Usuário             |
