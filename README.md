@@ -4,7 +4,7 @@
 * **Matrícula:** 202305874
 * **Professor:** Abrantes Araujo Silva Filho
 * **Turma:** SI1N
-* **Monitora:** Suellen Miranda
+* **Monitora:** Suellen Miranda Amorim
 
 > Essa atividade avaliativa foi realizado para a matéria de Design e Desenvolvimento de Banco de Dados 1 na Universidade de Vila Velha.
 
