@@ -10,8 +10,8 @@
 
 ### Estrutura de Diretórios
 - **pset1**
-  - **[si1n_202305874_postgresql.architect](./uvv_bd1_uvv/pset1/si1n_202305874_postgresql.architect)**
-  - **[si1n_202305874_postgresql.pdf](./uvv_bd1_uvv/pset1/si1n_202305874_postgresql.pdf)**
+  - **[si1n_202305874_postgresql.architect](https://github.com/caiquealmr/uvv_bd1_si1n/blob/main/pset1/si1n_202305874_postgresql.architect)**
+  - **[si1n_202305874_postgresql.pdf](https://github.com/caiquealmr/uvv_bd1_si1n/blob/main/pset1/si1n_202305874_postgresql.pdf)**
   - **[si1n_202305874_postgresql.sql](./uvv_bd1_si1n/pset1/si1n_202305874_postgres.sql)**
 
 ### O PSET
@@ -25,8 +25,8 @@ Esse trabalho consiste em um PSET com objetivo de implementar um banco de dados 
 ### Diagrama Relacional
 A partir do **SQL Power Architect** criei todas as tabelas e seus atributos incluindo comentários, criando chaves primárias, cardinalidades, relacionamentos, chaves estrangeiras e chaves compostas. Os arquivos gerados foram:
 
-* **[arquivo.architect](./uvv_bd1_uvv/pset1/si1n_202305874_postgresql.architect)** consiste no código para rodar o diagrama dentro do Software.
-* **[arquivo.pdf](./uvv_bd1_uvv/pset1/si1n_202305874_postgresql.pdf)** consiste em um arquivo PDF com uma imagem do diagrama.
+* **[arquivo.architect](https://github.com/caiquealmr/uvv_bd1_si1n/blob/main/pset1/si1n_202305874_postgresql.architect)** consiste no código para rodar o diagrama dentro do Software.
+* **[arquivo.pdf](https://github.com/caiquealmr/uvv_bd1_si1n/blob/main/pset1/si1n_202305874_postgresql.pdf)** consiste em um arquivo PDF com uma imagem do diagrama.
 
 ### Implementação do banco de dados no PostgreSQL
 A implementação do banco de dados foi feita no **PostgreSQL**, o sistema de gerenciamento de bancos de dados open source mais avançado que existe atualmente. Todo o passo a passo está descrito no **script.sql**, o qual está comentado e organizado de forma que qualquer leitor possa compreender cada comando usado.
