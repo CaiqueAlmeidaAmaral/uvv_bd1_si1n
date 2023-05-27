@@ -8,12 +8,12 @@
 
 > Essa atividade avaliativa foi realizado para a matéria de Design e Desenvolvimento de Banco de Dados 1 na Universidade de Vila Velha.
 
-### Estrutura de Diretórios
-- **pset1**
+### Estrutura dos Diretórios
+- **[pset1](https://github.com/caiquealmr/uvv_bd1_si1n/tree/main/pset1)**
   - **[si1n_202305874_postgresql.architect](https://github.com/caiquealmr/uvv_bd1_si1n/blob/main/pset1/si1n_202305874_postgresql.architect)**
   - **[si1n_202305874_postgresql.pdf](https://github.com/caiquealmr/uvv_bd1_si1n/blob/main/pset1/si1n_202305874_postgresql.pdf)**
   - **[si1n_202305874_postgresql.sql](./uvv_bd1_si1n/pset1/si1n_202305874_postgres.sql)**
-
+- **[README.md](https://github.com/caiquealmr/uvv_bd1_si1n/blob/main/README.md)**
 ### O PSET
 Um Problem Set (PSET) é um conjunto de problemas e tarefas difíceis (alguns
 extremamente difíceis) que o forçarão a estudar e realmente compreender a matéria.
