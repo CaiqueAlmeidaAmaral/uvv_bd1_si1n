@@ -16,7 +16,7 @@
 - **[README.md](https://github.com/caiquealmr/uvv_bd1_si1n/blob/main/README.md)**
 
 ## O PSET
-Um Problem Set (PSET) é um conjunto de problemas e tarefas difíceis (alguns extremamente difíceis) que o forção a estudar e realmente compreender a matéria.
+Um Problem Set (PSET) é um conjunto de problemas e tarefas difíceis (alguns extremamente difíceis) que o forçam a estudar e realmente compreender a matéria.
 Esse trabalho consiste em um PSET com objetivo de implementar um banco de dados no PostgreSQL, a partir de um diagrama relacional, e escrever códigos SQL para gerar diversos relatórios.
 
 ### Informações importantes
