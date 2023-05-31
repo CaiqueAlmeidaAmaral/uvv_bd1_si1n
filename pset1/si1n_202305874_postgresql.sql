@@ -1,3 +1,8 @@
+/*======================================================================*/
+/*Bem-vindo ao projeto de implementação de banco de dados no PostgreSQL.*/
+/*======================================================================*/
+
+
 --Apagando o banco de dados uvv, caso ele já exista.
 
 DROP DATABASE IF EXISTS uvv
@@ -58,9 +63,13 @@ ALTER USER caique_almeida_amaral
 SET SEARCH_PATH TO lojas, "$user", public
 ;
 
-/*
-Nesta etapa todas as tabelas são criadas. As chaves primárias e relacionamentos são criados junto as tabelas. Para que isso ocorra a ordem de criação deve ser obrigatoriamente tabelas filhas e em seguida tabelas pais.
-*/
+
+/*===========================================================================================================*/
+/*Nesta etapa todas as tabelas são criadas.                                                                  */
+/*As chaves primárias e relacionamentos são criados junto as tabelas.                                        */
+/*Para que isso ocorra a ordem de criação deve ser obrigatoriamente tabelas filhas e em seguida tabelas pais.*/
+/*===========================================================================================================*/
+
 
 --Criando a tabela “lojas” com a coluna “loja_id” como chave primária.
 
@@ -106,9 +115,12 @@ telefone3                            VARCHAR(20),
 CONSTRAINT pk_clientes               PRIMARY KEY (cliente_id)
 );
 
-/*
-Criando a tabela “pedidos” com a chave primária “pedido_id”. As colunas “cliente_id” e “loja_id” são chaves estrangeiras que fazem referência a chave primária das tabelas “clientes” e “lojas”, respectivamente.
-*/
+
+/*=============================================================================================================*/
+/* Criando a tabela “pedidos” com a chave primária “pedido_id”.                                                */
+/*As colunas “cliente_id” e “loja_id” são chaves estrangeiras que fazem referência a chave primária das tabelas*/
+/*“clientes” e “lojas”, respectivamente.                                                                       */
+/*=============================================================================================================*/
 
 CREATE TABLE pedidos (
 pedido_id                            NUMERIC(38) NOT NULL,
@@ -121,9 +133,11 @@ CONSTRAINT fk_pedidos_clientes       FOREIGN KEY (cliente_id) REFERENCES cliente
 CONSTRAINT fk_pedidos_lojas          FOREIGN KEY (loja_id)    REFERENCES lojas (loja_id)
 );
 
-/*
-Criando a tabela “envios” com a chave primária “envio_id”. As colunas “loja_id” e “cliente_id” são chaves estrangeiras que fazem referência a chave primária das tabelas “lojas” e “clientes”, respectivamente.
-*/
+/*=============================================================================================================*/
+/*Criando a tabela “envios” com a chave primária “envio_id”.                                                   */
+/*As colunas “loja_id” e “cliente_id” são chaves estrangeiras que fazem referência a chave primária das tabelas*/ 
+/*“lojas” e “clientes”, respectivamente.                                                                       */
+/*=============================================================================================================*/
 
 CREATE TABLE envios (
 envio_id                             NUMERIC(38)  NOT NULL,
@@ -136,9 +150,11 @@ CONSTRAINT fk_envios_lojas           FOREIGN KEY (loja_id)    REFERENCES lojas (
 CONSTRAINT fk_envios_clientes        FOREIGN KEY (cliente_id) REFERENCES clientes (cliente_id)
 );
 
-/*
-Criando a tabela “estoques” com a chave primária “estoque_id”. As colunas “loja_id” e “produto_id” são chaves estrangeiras que fazem referência a chave primária das tabelas “lojas” e “produtos”, respectivamente.
-*/
+/*=============================================================================================================*/
+/*Criando a tabela “estoques” com a chave primária “estoque_id”.                                               */
+/*As colunas “loja_id” e “produto_id” são chaves estrangeiras que fazem referência a chave primária das tabelas*/ 
+/*“lojas” e “produtos”, respectivamente.                                                                       */
+/*=============================================================================================================*/
 
 CREATE TABLE estoques (
 estoque_id                           NUMERIC(38) NOT NULL,
@@ -150,9 +166,11 @@ CONSTRAINT fk_estoques_lojas         FOREIGN KEY (loja_id)    REFERENCES lojas (
 CONSTRAINT fk_estoques_produtos      FOREIGN KEY (produto_id) REFERENCES produtos (produto_id)
 );
 
-/*
-Criando a tabela “pedidos_itens” com as chaves estrangeiras primárias “pedido_id “e “produto_id”, essas chaves fazem referência as chaves primárias das tabelas “pedidos” e “produtos”, respectivamente. A coluna “envio_id “é a chave estrangeira que faz referência a chave primária da tabela “envios”.
-*/
+/*==============================================================================================================*/
+/*Criando a tabela “pedidos_itens” com as chaves estrangeiras primárias “pedido_id “e “produto_id”, essas chaves*/
+/*fazem referência as chaves primárias das tabelas “pedidos” e “produtos”, respectivamente.                     */
+/*A coluna “envio_id “é a chave estrangeira que faz referência a chave primária da tabela “envios”.             */
+/*==============================================================================================================*/
 
 CREATE TABLE pedidos_itens (
 pedido_id                            NUMERIC(38)    NOT NULL,
@@ -167,72 +185,67 @@ CONSTRAINT fk_pedidos_itens_produtos FOREIGN KEY (produto_id)REFERENCES produtos
 CONSTRAINT fk_pedidos_itens_envios   FOREIGN KEY (envio_id)  REFERENCES envios (envio_id)
 );
 
-/*
-Criando uma constraint de checagem para tabela “produtos”, onde a coluna “preco_unitario” não pode armazenar valores menores que 0.
-*/
+/*======================================================================*/
+/*Aqui estão a criação das restrições de verificação                    */
+/*======================================================================*/
+
+--Criando uma constraint de checagem para tabela “produtos”, onde a coluna “preco_unitario” não pode armazenar valores menores que 0.
 
 ALTER TABLE produtos
 ADD CONSTRAINT preco_unitario_constraint
 CHECK (preco_unitario >= 0)
 ;
 
-/*
-Criando uma constraint de checagem para tabela “estoques”, onde a coluna “quantidade” não pode armazenar valores menores que 0.
-*/
+
+--Criando uma constraint de checagem para tabela “estoques”, onde a coluna “quantidade” não pode armazenar valores menores que 0.
 
 ALTER TABLE estoques
 ADD CONSTRAINT quantidade_constraint
 CHECK (quantidade >= 0
 );
 
-/*
-Criando uma constraint de checagem para tabela “pedidos_itens”, onde a coluna “preco_unitario” não pode armazenar valores menores que 0.
-*/
+
+--Criando uma constraint de checagem para tabela “pedidos_itens”, onde a coluna “preco_unitario” não pode armazenar valores menores que 0.
 
 ALTER TABLE pedidos_itens
 ADD CONSTRAINT preco_unitario_constraint
 CHECK (preco_unitario >= 0)
 ;
 
-/*
-Criando uma constraint de checagem para tabela “pedidos_itens”, onde a coluna “quantidade” não pode armazenar valores menores que 0.
-*/
+
+--Criando uma constraint de checagem para tabela “pedidos_itens”, onde a coluna “quantidade” não pode armazenar valores menores que 0.
 
 ALTER TABLE pedidos_itens
 ADD CONSTRAINT quantidade_constraint
 CHECK (quantidade >= 0)
 ;
 
-/*
-Criando uma restrição de checagem em que a coluna “endereco_fisico” ou a coluna "endereço_web" da tabela "lojas" deve ser obrigatóriamente preenchida. 
-*/
+
+--Criando uma restrição de checagem em que a coluna “endereco_fisico” ou a coluna "endereço_web" da tabela "lojas" deve ser obrigatóriamente preenchida. 
 
 ALTER TABLE lojas
 ADD CONSTRAINT endereco_fisico_web_constraint
 CHECK (endereco_fisico IS NOT NULL OR endereco_web IS NOT NULL)
 ;
 
-/*
-Criando uma constraint de checagem para tabela “pedidos”, onde a coluna “status” só pode aceitar os seguintes valores: CANCELADO, COMPLETO, ABERTO, PAGO, REEMBOLSADO e ENVIADO.
-*/
+--Criando uma constraint de checagem para tabela “pedidos”, onde a coluna “status” só pode aceitar os seguintes valores: CANCELADO, COMPLETO, ABERTO, PAGO, REEMBOLSADO e ENVIADO.
 
 ALTER TABLE pedidos
 ADD CONSTRAINT status_constraint
 CHECK (status = 'CANCELADO' OR status = 'COMPLETO' OR status = 'ABERTO' OR status = 'PAGO' OR status = 'REEMBOLSADO' OR status = 'ENVIADO')
 ;
 
-/*
-Criando uma constraint de checagem para tabela “envios”, onde a coluna “status” só pode aceitar os seguintes valores: CRIADO, ENVIADO, TRANSITO e ENTREGUE.
-*/
+
+--Criando uma constraint de checagem para tabela “envios”, onde a coluna “status” só pode aceitar os seguintes valores: CRIADO, ENVIADO, TRANSITO e ENTREGUE.
 
 ALTER TABLE envios
 ADD CONSTRAINT status_constraint
 CHECK (status = 'CRIADO' OR status = 'ENVIADO' OR status = 'TRANSITO' OR status = 'ENTREGUE')
 ;
 
-/*
-Aqui estão todos os comentários, estão divididos como comentário ao banco de dados e comentérios de cada tabela com suas respectivas colunas.
-*/
+/*=============================================================================================================================================*/
+/*Aqui estão todos os comentários, estão divididos como comentário ao banco de dados e comentérios de cada tabela com suas respectivas colunas.*/
+/*=============================================================================================================================================*/
 
 --Comentário referente ao banco de dados "uvv".
 
