@@ -1,6 +1,6 @@
-/*======================================================================*/
-/*Bem-vindo ao projeto de implementação de banco de dados no PostgreSQL.*/
-/*======================================================================*/
+/*=====================================================================================================*/
+/*Bem-vindo ao projeto de implementação de banco de dados no PostgreSQL.                               */
+/*=====================================================================================================*/
 
 
 --Apagando o banco de dados uvv, caso ele já exista.
@@ -8,12 +8,12 @@
 DROP DATABASE IF EXISTS uvv
 ;
 
---Deletando o usuário “caique_almeida_amaral”, caso ele já exista.
+--Deletando o usuário "caique_almeida_amaral", caso ele já exista.
 
 DROP USER IF EXISTS caique_almeida_amaral
 ;
 
---Criando um usuário com meu nome “caique_almeida_amaral” com as permissões para criar bancos de dados, criar roles e com uma senha criptografada.
+--Criando um usuário com meu nome "caique_almeida_amaral" com as permissões para criar bancos de dados, criar roles e com uma senha criptografada.
 
 CREATE USER caique_almeida_amaral WITH
 CREATEDB
@@ -47,14 +47,15 @@ ALLOW_CONNECTIONS = true
 SELECT CURRENT_USER
 ;
 
---Criando um schema lógico chamado de “lojas” com usuário “caique_almeida_amaral” para usalo.
+--Criando um schema lógico chamado de "lojas" com usuário “caique_almeida_amaral” para usalo.
 
 CREATE SCHEMA lojas 
 AUTHORIZATION caique_almeida_amaral
 ;
 
 --Alterando o search_path para o usuário criado
-SET SEARCH_PATH TO lojas, “$user”, public
+
+SET SEARCH_PATH TO lojas, "$user", public
 ;
 
 --Alterando o search_path para o usuário criado de forma permanente
@@ -64,14 +65,15 @@ SET SEARCH_PATH TO lojas, "$user", public
 ;
 
 
-/*===========================================================================================================*/
-/*Nesta etapa todas as tabelas são criadas.                                                                  */
-/*As chaves primárias e relacionamentos são criados junto as tabelas.                                        */
-/*Para que isso ocorra a ordem de criação deve ser obrigatoriamente tabelas filhas e em seguida tabelas pais.*/
-/*===========================================================================================================*/
+/*====================================================================================================*/
+/*Nesta etapa todas as tabelas são criadas.                                                           */
+/*As chaves primárias e relacionamentos são criados junto as tabelas.                                 */
+/*Para que isso ocorra a ordem de criação deve ser obrigatoriamente tabelas filhas e em seguida       */
+/*tabelas pais.                                                                                       */
+/*====================================================================================================*/
 
 
---Criando a tabela “lojas” com a coluna “loja_id” como chave primária.
+--Criando a tabela "lojas" com a coluna "loja_id" como chave primária.
 
 CREATE TABLE lojas (
 loja_id                              NUMERIC(38)  NOT NULL,
@@ -88,7 +90,7 @@ logo_ultima_atualizacao              DATE,
 CONSTRAINT pk_lojas                  PRIMARY KEY (loja_id)
 );
 
---Criando a tabela “produtos” com a coluna “produto_id” como chave primária.
+--Criando a tabela "produtos" com a coluna "produto_id" como chave primária.
 
 CREATE TABLE produtos (
 produto_id                           NUMERIC(38)  NOT NULL,
@@ -103,7 +105,7 @@ imagem_ultima_atualizacao            DATE,
 CONSTRAINT pk_produtos               PRIMARY KEY (produto_id)
 );
 
---Criando a tabela “clientes” com a coluna “cliente_id” como chave primária.
+--Criando a tabela "clientes" com a coluna "cliente_id" como chave primária.
 
 CREATE TABLE clientes (
 cliente_id                           NUMERIC(38)  NOT NULL,
@@ -116,11 +118,11 @@ CONSTRAINT pk_clientes               PRIMARY KEY (cliente_id)
 );
 
 
-/*=============================================================================================================*/
-/* Criando a tabela “pedidos” com a chave primária “pedido_id”.                                                */
-/*As colunas “cliente_id” e “loja_id” são chaves estrangeiras que fazem referência a chave primária das tabelas*/
-/*“clientes” e “lojas”, respectivamente.                                                                       */
-/*=============================================================================================================*/
+/*====================================================================================================*/
+/* Criando a tabela "pedidos" com a chave primária "pedido_id".                                       */
+/*As colunas "cliente_id" e "loja_id" são chaves estrangeiras que fazem referência a chave primária   */
+/*das tabelas "clientes" e "lojas", respectivamente.                                                  */
+/*====================================================================================================*/
 
 CREATE TABLE pedidos (
 pedido_id                            NUMERIC(38) NOT NULL,
@@ -133,11 +135,11 @@ CONSTRAINT fk_pedidos_clientes       FOREIGN KEY (cliente_id) REFERENCES cliente
 CONSTRAINT fk_pedidos_lojas          FOREIGN KEY (loja_id)    REFERENCES lojas (loja_id)
 );
 
-/*=============================================================================================================*/
-/*Criando a tabela “envios” com a chave primária “envio_id”.                                                   */
-/*As colunas “loja_id” e “cliente_id” são chaves estrangeiras que fazem referência a chave primária das tabelas*/ 
-/*“lojas” e “clientes”, respectivamente.                                                                       */
-/*=============================================================================================================*/
+/*====================================================================================================*/
+/*Criando a tabela "envios" com a chave primária "envio_id".                                          */
+/*As colunas "loja_id" e "cliente_id" são chaves estrangeiras que fazem referência a chave primária   */
+/*das tabelas "lojas" e "clientes", respectivamente.                                                  */
+/*====================================================================================================*/
 
 CREATE TABLE envios (
 envio_id                             NUMERIC(38)  NOT NULL,
@@ -150,11 +152,11 @@ CONSTRAINT fk_envios_lojas           FOREIGN KEY (loja_id)    REFERENCES lojas (
 CONSTRAINT fk_envios_clientes        FOREIGN KEY (cliente_id) REFERENCES clientes (cliente_id)
 );
 
-/*=============================================================================================================*/
-/*Criando a tabela “estoques” com a chave primária “estoque_id”.                                               */
-/*As colunas “loja_id” e “produto_id” são chaves estrangeiras que fazem referência a chave primária das tabelas*/ 
-/*“lojas” e “produtos”, respectivamente.                                                                       */
-/*=============================================================================================================*/
+/*====================================================================================================*/
+/*Criando a tabela "estoques" com a chave primária "estoque_id".                                      */
+/*As colunas "loja_id" e "produto_id" são chaves estrangeiras que fazem referência a chave primária   */
+/*das tabelas "lojas" e "produtos", respectivamente.                                                  */
+/*====================================================================================================*/
 
 CREATE TABLE estoques (
 estoque_id                           NUMERIC(38) NOT NULL,
@@ -166,11 +168,12 @@ CONSTRAINT fk_estoques_lojas         FOREIGN KEY (loja_id)    REFERENCES lojas (
 CONSTRAINT fk_estoques_produtos      FOREIGN KEY (produto_id) REFERENCES produtos (produto_id)
 );
 
-/*==============================================================================================================*/
-/*Criando a tabela “pedidos_itens” com as chaves estrangeiras primárias “pedido_id “e “produto_id”, essas chaves*/
-/*fazem referência as chaves primárias das tabelas “pedidos” e “produtos”, respectivamente.                     */
-/*A coluna “envio_id “é a chave estrangeira que faz referência a chave primária da tabela “envios”.             */
-/*==============================================================================================================*/
+/*====================================================================================================*/
+/*Criando a tabela "pedidos_itens" com as chaves estrangeiras primárias "pedido_id" e "produto_id",   */
+/*essas chaves.                                                                                       */
+/*fazem referência as chaves primárias das tabelas "pedidos" e "produtos", respectivamente.           */
+/*A coluna "envio_id" é a chave estrangeira que faz referência a chave primária da tabela "envios".   */
+/*====================================================================================================*/
 
 CREATE TABLE pedidos_itens (
 pedido_id                            NUMERIC(38)    NOT NULL,
@@ -185,11 +188,11 @@ CONSTRAINT fk_pedidos_itens_produtos FOREIGN KEY (produto_id)REFERENCES produtos
 CONSTRAINT fk_pedidos_itens_envios   FOREIGN KEY (envio_id)  REFERENCES envios (envio_id)
 );
 
-/*======================================================================*/
-/*Aqui estão a criação das restrições de verificação                    */
-/*======================================================================*/
+/*====================================================================================================*/
+/*Aqui estão a criação das restrições de verificação.                                                 */
+/*====================================================================================================*/
 
---Criando uma constraint de checagem para tabela “produtos”, onde a coluna “preco_unitario” não pode armazenar valores menores que 0.
+--Criando uma constraint de checagem para tabela "produtos", onde a coluna "preco_unitario" não pode armazenar valores menores que 0.
 
 ALTER TABLE produtos
 ADD CONSTRAINT preco_unitario_constraint
@@ -243,9 +246,10 @@ ADD CONSTRAINT status_constraint
 CHECK (status = 'CRIADO' OR status = 'ENVIADO' OR status = 'TRANSITO' OR status = 'ENTREGUE')
 ;
 
-/*=============================================================================================================================================*/
-/*Aqui estão todos os comentários, estão divididos como comentário ao banco de dados e comentérios de cada tabela com suas respectivas colunas.*/
-/*=============================================================================================================================================*/
+/*====================================================================================================*/
+/*Aqui estão todos os comentários, estão divididos como comentário ao banco de dados e comentérios de */
+/*cada tabela com suas respectivas colunas.                                                           */
+/*====================================================================================================*/
 
 --Comentário referente ao banco de dados "uvv".
 
@@ -292,7 +296,7 @@ COMMENT ON COLUMN lojas.logo_ultima_atualizacao IS
 'Essa coluna é responsável por armazenar a data da última atualização da logo das lojas.'
 ;
 
---Comentários referentes a tabela “produtos”.
+--Comentários referentes a tabela "produtos".
 
 COMMENT ON TABLE produtos IS 
 'Essa tabela é responsável por armazenar as colunas que fazem referência aos produtos.'
@@ -325,7 +329,7 @@ COMMENT ON COLUMN produtos.imagem_ultima_atualizacao IS
 'Essa coluna é responsável por armazenar a data da última atualização da imagem dos produtos.'
 ;
 
---Comentários referentes a tabela “clientes”.
+--Comentários referentes a tabela "clientes".
 
 COMMENT ON TABLE clientes IS 
 'Essa tabela é responsável por armazenar as colunas que fazem referência aos clientes.'
@@ -349,7 +353,7 @@ COMMENT ON COLUMN clientes.telefone3 IS
 'Essa coluna é responsável por armazenar o terceiro telefone dos clientes.'
 ;
 
---Comentários referentes a tabela “pedidos”.
+--Comentários referentes a tabela "pedidos".
 
 COMMENT ON TABLE pedidos IS 
 'Essa tabela é responsável por armazenar as colunas que fazem referência aos pedidos.'
@@ -370,7 +374,7 @@ COMMENT ON COLUMN pedidos.loja_id IS
 'Essa é chave primária da tabela "lojas", está aqui como chave estrangeira devido ao relacionamento entre as tabelas "lojas" e "pedidos".'
 ;
 
---Comentários referentes a tabela “envios”.
+--Comentários referentes a tabela "envios".
 
 COMMENT ON TABLE envios IS 
 'Essa tabela é responsável por armazenar as colunas que fazem referência aos envios.'
@@ -391,7 +395,7 @@ COMMENT ON COLUMN envios.status IS
 'Essa coluna é responsável por armazenar o status dos envios.'
 ;
 
---Comentários referentes a tabela “estoques”.
+--Comentários referentes a tabela "estoques".
 
 COMMENT ON TABLE estoques IS 
 'Essa tabela é responsável por armazenar as colunas que fazem referência aos estoques.'
@@ -409,7 +413,7 @@ COMMENT ON COLUMN estoques.quantidade IS
 'Essa coluna é responsável por armazenar o o valor numérico da quantidade de produtos em estoque.'
 ;
 
---Comentários referentes a tabela “pedidos_itens”.
+--Comentários referentes a tabela "pedidos_itens".
 
 COMMENT ON TABLE pedidos_itens IS 
 'Essa tabela é responsável por armazenar as colunas que fazem referência aos pedidos de itens.'
@@ -432,4 +436,3 @@ COMMENT ON COLUMN pedidos_itens.quantidade IS
 COMMENT ON COLUMN pedidos_itens.envio_id IS 
 'Essa é chave primária da tabela "envios", está aqui como chave estrangeira devido ao relacionamento entre as tabelas "envios" e "pedidos_itens".'
 ;
-
