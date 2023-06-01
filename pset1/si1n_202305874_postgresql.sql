@@ -72,7 +72,6 @@ SET SEARCH_PATH TO lojas, "$user", public
 /*tabelas pais.                                                                                       */
 /*====================================================================================================*/
 
-
 --Criando a tabela "lojas" com a coluna "loja_id" como chave primária.
 
 CREATE TABLE lojas (
@@ -135,6 +134,7 @@ CONSTRAINT fk_pedidos_clientes       FOREIGN KEY (cliente_id) REFERENCES cliente
 CONSTRAINT fk_pedidos_lojas          FOREIGN KEY (loja_id)    REFERENCES lojas (loja_id)
 );
 
+
 /*====================================================================================================*/
 /*Criando a tabela "envios" com a chave primária "envio_id".                                          */
 /*As colunas "loja_id" e "cliente_id" são chaves estrangeiras que fazem referência a chave primária   */
@@ -152,6 +152,7 @@ CONSTRAINT fk_envios_lojas           FOREIGN KEY (loja_id)    REFERENCES lojas (
 CONSTRAINT fk_envios_clientes        FOREIGN KEY (cliente_id) REFERENCES clientes (cliente_id)
 );
 
+
 /*====================================================================================================*/
 /*Criando a tabela "estoques" com a chave primária "estoque_id".                                      */
 /*As colunas "loja_id" e "produto_id" são chaves estrangeiras que fazem referência a chave primária   */
@@ -167,6 +168,7 @@ CONSTRAINT pk_estoques               PRIMARY KEY (estoque_id),
 CONSTRAINT fk_estoques_lojas         FOREIGN KEY (loja_id)    REFERENCES lojas (loja_id),
 CONSTRAINT fk_estoques_produtos      FOREIGN KEY (produto_id) REFERENCES produtos (produto_id)
 );
+
 
 /*====================================================================================================*/
 /*Criando a tabela "pedidos_itens" com as chaves estrangeiras primárias "pedido_id" e "produto_id",   */
@@ -188,8 +190,9 @@ CONSTRAINT fk_pedidos_itens_produtos FOREIGN KEY (produto_id)REFERENCES produtos
 CONSTRAINT fk_pedidos_itens_envios   FOREIGN KEY (envio_id)  REFERENCES envios (envio_id)
 );
 
+
 /*====================================================================================================*/
-/*Aqui estão a criação das restrições de verificação.                                                 */
+/*Aqui estão os comandos para a criação das restrições de verificação.                                */
 /*====================================================================================================*/
 
 --Criando uma constraint de checagem para tabela "produtos", onde a coluna "preco_unitario" não pode armazenar valores menores que 0.
@@ -257,7 +260,7 @@ COMMENT ON DATABASE uvv IS
 'Esse banco de dados é responsável por armazenar as tabelas lojas, produtos, clientes, pedidos, estoques, envios e produtos_itens.'
 ;
 
---Comentários referentes a tabela “lojas”.
+--Comentários referentes a tabela "lojas".
 
 COMMENT ON TABLE lojas IS 
 'Essa tabela é responsável por armazenar as colunas que fazem referência as lojas.
